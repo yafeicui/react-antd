@@ -1,0 +1,16 @@
+.home-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.home-box .home-img {
+  display: block;
+  width: 80%;
+  height: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+}
