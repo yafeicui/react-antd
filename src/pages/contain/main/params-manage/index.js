@@ -40,7 +40,6 @@ class ParamsManage extends Component {
         <Button type="primary" onClick={this.changeReduxTitle}>
           改变redux
         </Button>
-        {/* <div> */}
         {infoList.map(ele => {
           return (
             <div key={ele.key}>
@@ -50,7 +49,6 @@ class ParamsManage extends Component {
             </div>
           );
         })}
-        {/* </div> */}
       </PageHeader>
     );
   }

@@ -7,8 +7,8 @@ import QuotaManage from '../quota-manage';
 import HtForm from '../ht-form';
 import QuotaDetail from '../quota-details/index';
 import ParamsManage from '../params-manage';
-// import Role from '../role';
-// import Home from '../home';
+import QuotaMoney from '../day-manage/quota-money';
+import ProgressSearch from "../day-manage/progress-search";
 
 // 第二个工具是connect，稍后会作介绍
 import { Provider } from 'react-redux'
@@ -32,6 +32,8 @@ class Main extends Component {
             <Route path="/ht-form" component={HtForm} />
             <Route path="/limit-details" component={QuotaDetail} />
             <Route path="/config-mgr" component={ParamsManage} />
+            <Route path="/limit-book" component={QuotaMoney} />
+            <Route path="/article-query" component={ProgressSearch} />
           </div>
           {/* <Route path="/pro" exact render={() => to="/pro/home" />}></Route> */}
         </Provider>

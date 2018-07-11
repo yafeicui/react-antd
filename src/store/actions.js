@@ -19,3 +19,17 @@ export function setInfoList(data) {
     })
   };
 }
+
+export function dayManageChangeMsg(data) {
+  return (dispatch, getState) => {
+    dispatch({ type: "CHANGE_DAYMANAGE_MSG", data: data });
+  }
+}
+
+export function changeProgressPageMsg(data) {
+  return (dispatch, getState) => {
+    dispatch({type: 'CHANGE_PROGRESS_PAGE_DATA', data: data})
+  }
+}
+
+
