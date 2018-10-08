@@ -43,7 +43,7 @@ class ProMenu extends Component {
     })
 
     return (
-      <div>
+      <div className="menu-position">
         <Menu theme='dark'
           onClick={this.handleClick}
           style={{ width: 200 }}

@@ -3,9 +3,10 @@ import { Card, Divider, Icon, Button, Input, Select, Tooltip } from 'antd';
 import axios from 'axios';
 import PageHeader from '@/components/page-title';
 import HtTable from '@/components/common-table';
-import HtForm from '@/components/common-form'
+import HtForm from '@/components/common-form';
 import SingleDialog from './single/index';
 import EditDialog from './edit-dialog';
+import CompresiveCredit from './credit'
 // import MixDialog from './mix/index';
 import './index.css';
 
@@ -79,6 +80,8 @@ export default class QuotaManage extends Component {
   htTableRef = React.createRef();
   htFrom = React.createRef();
   EditDialog = React.createRef();
+  CompresiveCreditRef = React.createRef();
+  creditFormRef = React.createRef();
   // 续作
   handleConfirm = (row) => {
     axios({
@@ -104,12 +107,12 @@ export default class QuotaManage extends Component {
   handleSingleDialog = () => {
     this.singleDialog.current.show()
   }
-
   // 新增综合授信
   handleMixDialog = () => {
-    this.MixDialog.current.show()
+    this.creditFormRef.current.handleShowDialog()
   }
   handleSearch = (values) => {
+    // console.log(values, 1)
     for (const key in values) {
       if (values[key] === undefined) {
         const value = values;
@@ -195,6 +198,7 @@ export default class QuotaManage extends Component {
           <SingleDialog ref={this.singleDialog} />
           {/* <MixDialog ref={this.MixDialog} /> */}
           <EditDialog ref={this.EditDialog} onSuccess={this.handleRefresh} />
+          <CompresiveCredit ref={this.CompresiveCreditRef} wrappedComponentRef={this.creditFormRef}/>
         </div>
       </PageHeader>
     )
