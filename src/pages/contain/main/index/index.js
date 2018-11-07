@@ -1,29 +1,65 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './index.css';
-import Home from '../home';
-import Task from '../task';
-import QuotaManage from '../quota-manage';
-import HtForm from '../ht-form';
-import QuotaDetail from '../quota-details/index';
-import ParamsManage from '../params-manage';
-import QuotaMoney from '../day-manage/quota-money';
-import ProgressSearch from "../day-manage/progress-search";
+import Bundle from '@/components/bundle.js';
+
+// import Home from '../home';
+// import Task from '../task';
+// import QuotaManage from '../quota-manage';
+// import HtForm from '../ht-form';
+// import QuotaDetail from '../quota-details/index';
+// import ParamsManage from '../params-manage';
+// import QuotaMoney from '../day-manage/quota-money';
+// import ProgressSearch from '../day-manage/progress-search';
 
 // 第二个工具是connect，稍后会作介绍
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 // 引入创建好的store实例
-import store from '@/store/index.js'
-
+import store from '@/store/index.js';
+const Home = props => (
+  <Bundle load={() => import('../home')}>{Home => <Home {...props} />}</Bundle>
+);
+const Task = props => (
+  <Bundle load={() => import('../task')}>{Task => <Task {...props} />}</Bundle>
+);
+const QuotaManage = props => (
+  <Bundle load={() => import('../quota-manage')}>
+    {QuotaManage => <QuotaManage {...props} />}
+  </Bundle>
+);
+const HtForm = props => (
+  <Bundle load={() => import('../ht-form')}>
+    {HtForm => <HtForm {...props} />}
+  </Bundle>
+);
+const QuotaDetail = props => (
+  <Bundle load={() => import('../quota-details/index')}>
+    {QuotaDetail => <QuotaDetail {...props} />}
+  </Bundle>
+);
+const ParamsManage = props => (
+  <Bundle load={() => import('../params-manage')}>
+    {ParamsManage => <ParamsManage {...props} />}
+  </Bundle>
+);
+const QuotaMoney = props => (
+  <Bundle load={() => import('../day-manage/quota-money')}>
+    {QuotaMoney => <QuotaMoney {...props} />}
+  </Bundle>
+);
+const ProgressSearch = props => (
+  <Bundle load={() => import('../day-manage/progress-search')}>
+    {ProgressSearch => <ProgressSearch {...props} />}
+  </Bundle>
+);
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
+    this.state = {};
   }
   render() {
-    return <div className="con-box">
+    return (
+      <div className="con-box">
         <Provider store={store}>
           <div>
             <Route path="/home" component={Home} />
@@ -37,7 +73,8 @@ class Main extends Component {
           </div>
           {/* <Route path="/pro" exact render={() => to="/pro/home" />}></Route> */}
         </Provider>
-      </div>;
+      </div>
+    );
   }
 }
 export default Main;
