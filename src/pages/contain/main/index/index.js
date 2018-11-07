@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './index.css';
+// 第二个工具是connect，稍后会作介绍
+import { Provider } from 'react-redux';
+// 引入创建好的store实例
+import store from '@/store/index.js';
 
+// 设置路由按需加载
 import { asyncComponent } from '@/components/asyncComponent';
 // import Home from '../home';
 // import Task from '../task';
@@ -61,10 +66,6 @@ const ProgressSearch = asyncComponent(() =>
 //   </Bundle>
 // );
 
-// 第二个工具是connect，稍后会作介绍
-import { Provider } from 'react-redux';
-// 引入创建好的store实例
-import store from '@/store/index.js';
 class Main extends Component {
   constructor(props) {
     super(props);
