@@ -6,8 +6,6 @@ import { Provider } from 'react-redux';
 // 引入创建好的store实例
 import store from '@/store/index.js';
 
-// 设置路由按需加载
-import { asyncComponent } from '@/components/asyncComponent';
 // import Home from '../home';
 // import Task from '../task';
 // import QuotaManage from '../quota-manage';
@@ -16,6 +14,8 @@ import { asyncComponent } from '@/components/asyncComponent';
 // import ParamsManage from '../params-manage';
 // import QuotaMoney from '../day-manage/quota-money';
 // import ProgressSearch from '../day-manage/progress-search';
+// 设置路由按需加载
+import { asyncComponent } from '@/components/asyncComponent';
 const Home = asyncComponent(() => import('../home'));
 const Task = asyncComponent(() => import('../task'));
 const QuotaManage = asyncComponent(() => import('../quota-manage'));

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Input, Icon, Tooltip} from 'antd';
+import { Input, Icon, Tooltip, Divider} from 'antd';
 import { withRouter } from 'react-router-dom';
 import HtTable from '@/components/common-table';
+import ExportJsonExcel from 'js-export-excel';
 import CommenForm from '../common-form';
 import './index.css';
 
@@ -40,6 +41,22 @@ class ToDoTask extends Component {
       this.htTable.current.handleGetPaginationInfo();
     })
   }
+  exportTable = (row) => {
+    console.log(row, 111)
+    var option={};
+    let dataTable = [{'客户编号':row.customerId, '客户名称': row.customerName}];
+    option.fileName = '项目统计'
+    option.datas=[
+      {
+        sheetData:dataTable,
+        sheetName:'sheet',
+        sheetFilter:['客户编号','客户名称'],
+        sheetHeader:['客户编号','客户名称'],
+      }
+    ];
+    var toExcel = new ExportJsonExcel(option); //new
+    toExcel.saveExcel();
+  }
   htTable = React.createRef();
   render() {
     const tableConfig = {
@@ -64,6 +81,8 @@ class ToDoTask extends Component {
             <div>
               <Tooltip placement="topLeft" title="编辑">
                 <Icon type="edit" onClick={() => this.handleEdit(text, record)} />
+                <Divider type="vertical" />
+                <span onClick={() => this.exportTable(record)}>导出</span>
               </Tooltip>
             </div>
           ),
